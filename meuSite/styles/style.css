@@ -1,4 +1,64 @@
-h1
+body
 {
-    text-align: center;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #00008B;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+img
+{
+    max-height: 75vh;
+}
+
+table
+{
+    border-style: solid;
+    border-width: 2px;
+}
+
+table th
+{
+    margin: 0px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+input
+{
+    margin-bottom: 5px;
+}
+
+.button
+{
+    color: white;
+    border-style: none;
+    background-color: #00008B;
+    padding: 5px;
 }

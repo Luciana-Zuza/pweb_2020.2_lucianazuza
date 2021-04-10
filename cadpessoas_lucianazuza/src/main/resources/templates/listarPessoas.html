@@ -5,56 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="Codigo Secreto" content="1520694924">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" th:href=@{css/style.css}>
     <title>Projeto Web</title>
 </head>
 <body>
     <ul>
-        <li><a href="index.html">Início</a></li>
+        <li><a href="/">Início</a></li>
         <hr>
-        <li><a href="canaisNoticias.html">Canais de notícias</a></li>
+        <li><a href="/public/canaisNoticias.htm">Canais de notícias</a></li>
         <hr>
-        <li><a href="adicionarPessoa.html">Adicionar pessoa</a></li>
-        <li><a class="active" href="listarPessoas.html">Listar pessoas</a></li>
+        <li><a href="/adicionarPessoa">Adicionar pessoa</a></li>
+        <li><a class="active" href="/listarPessoas">Listar pessoas</a></li>
         <hr>
-        <li><a href="sobre.html">Sobre o site</a></li>
-        <li><a href="contato.html">Mande um e-Mail</a></li>
+        <li><a href="/public/sobre.html">Sobre o site</a></li>
+        <li><a href="/public/contato.html">Mande um e-Mail</a></li>
       </ul>
       <div style="margin-left:25%;padding:1px 16px;height:1000px;">
         <h1>Listar pessoas</h1>
         <table style="width: 100%;">
-          <tr>
-            <th>Nome completo</th>
-            <th>Data de Nascimento</th>
-            <th>e-Mail</th>
-            <th>Sexo</th>
-            <th>Editar</th>
-            <th>Remover</th>
-          </tr>
-          <tr>
-            <th>Lucas</th>
-            <th>05/10/1998</th>
-            <th><a href="mailto:lucas@email.com">lucas@email.com</a></th>
-            <th>Masculino</th>
-            <th><a href="editarPessoa.html">Editar</a></th>
-            <th><a href="editarPessoa.html">Remover</a></th>
-          </tr>
-          <tr>
-            <th>Renata</th>
-            <th>02/05/1989</th>
-            <th><a href="mailto:renata@email.com">renata@email.com</a></th>
-            <th>Feminino</th>
-            <th><a href="editarPessoa.html">Editar</a></th>
-            <th><a href="editarPessoa.html">Remover</a></th>
-          </tr>
-          <tr>
-            <th>Lais</th>
-            <th>22/03/1993</th>
-            <th><a href="mailto:lais@email.com">lais@email.com</a></th>
-            <th>Não informado</th>
-            <th><a href="editarPessoa.html">Editar</a></th>
-            <th><a href="editarPessoa.html">Remover</a></th>
-          </tr>
+        	<thead>
+        	<tr>
+            	<th>Nome completo</th>
+            	<th>Data de Nascimento</th>
+            	<th>e-Mail</th>
+            	<th>Sexo</th>
+            	<th>Editar</th>
+            	<th>Remover</th>
+          	</tr>
+        	</thead>
+        	<tbody>
+        	    <tr th:each="pessoa: ${pessoas}">
+        	    	<td th:text=${pessoa.id}></td>
+        	    	<td th:text=${pessoa.nome}></td>
+        	    	<td>
+        	    		<a th:href="'mailto:' + ${pessoa.email}" th:text=${pessoa.email}></a>
+        	    	</td>
+        	    	<td th:text=${pessoa.genero}></td>
+        	    	<td>
+        	    		<a th:href="@{/editar/{id}(id=${pessoa.id})}">Editar</a>
+        	    	</td>
+        	    	<td>
+        	    		<a th:href="@{/remover/{id}(id=${pessoa.id})}">Remover</a>
+        	    	</td>
+          		</tr>
+        	</tbody>
         </table>
 </body>
 </html>

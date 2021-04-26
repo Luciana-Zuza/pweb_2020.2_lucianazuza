@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Codigo Secreto" content="1520694924">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Projeto Web</title>
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <hr>
+        <li><a href="canaisNoticias.html">Canais de notícias</a></li>
+        <hr>
+        <li><a href="adicionarcliente.html">Adicionar cliente</a></li>
+        <li><a href="listarclientes.html">Listar clientes</a></li>
+        <hr>
+        <li><a href="sobre.html">Sobre o site</a></li>
+        <li><a href="contato.html">Mande um e-Mail</a></li>
+      </ul>
+      <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <h1>Editar cliente</h1>
+        <form action="sucesso.html">
+          <label for="Nome">Nome completo*: </label>
+          <input type="text" name="Nome" id="Nome"><br>
+          <label for="Data">Data de nascimento*:</label>
+          <input type="date" name="Data" id="Data"><br>
+          <label for="Email">e-Mail*:</label>
+          <input type="email" name="Email" id="Email"><br>
+          <label for="Sexo">Sexo*:</label><br>
+          <input type="radio" name="Sexo" id="Masculino">
+          <label for="Sexo">Masculino</label><br>
+          <input type="radio" name="Sexo" id="Feminino">
+          <label for="Sexo">Feminino</label><br>
+          <input type="radio" name="Sexo" id="NaoInformar">
+          <label for="Sexo">Não informar</label><br>
+          <input type="reset" value="Limpar" class="button">
+          <input type="submit" value="Cadastrar" class="button">
+        </form>
+        <p>* Campo Obrigatório</p>
+</body>
+</html>

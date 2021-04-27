@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Codigo Secreto" content="2014989300">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  th:href=@{css/style.css}>
+    <title>Projeto Web</title>
+</head>
+<body>
+  <ul>
+    <li><a href="/">Início</a></li>
+    <hr>
+    <li><a href="/adicionarCliente">Adicionar cliente</a></li>
+    <li><a href="/listarClientes">Listar clientes</a></li>
+    <li><a class="active" href="/adicionarProduto">Adicionar Produto</a></li>
+    <li><a href="/listarProdutos">Listar Produtos</a></li>
+    <hr>
+    <li><a href="/public/sobre.html">Sobre o site</a></li>
+    <li><a href="/public/contato.html">Mande um e-Mail</a></li>
+  </ul>
+      <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <h1>Adicionar produto</h1>
+        <form th:object="${produto}" method="POST" th:action=@{/adicionarProduto}>
+          <label for="Nome">Nome do produto*: </label>
+          <input type="text" name="Nome" th:field="*{nome}" id="Nome"><br>
+          <label for="marca">Marca*:</label>
+          <input type="text" name="marca" th:field="*{marca}" id="marca"><br>
+          <label for="altura">Altura*:</label>
+          <input type="text" name="altura" th:field="*{x}" id="altura"><br>
+          <label for="largura">Largura*:</label>
+          <input type="text" name="largura" th:field="*{y}" id="largura"><br>
+          <label for="Comprimento">Comprimento*:</label>
+          <input type="text" name="Comprimento" th:field="*{z}" id="Comprimento"><br>
+          <label for="peso">Peso*:</label>
+          <input type="text" name="peso" th:field="*{peso}" id="peso"><br>
+          <label for="preco">Preço*:</label>
+          <input type="text" name="preco" th:field="*{preco}" id="preco"><br>
+          <input type="reset" value="Limpar" class="button">
+          <input type="submit" value="Cadastrar" class="button">
+        </form>
+        <p>* Campo Obrigatório</p>
+</body>
+</html>

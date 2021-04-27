@@ -13,39 +13,45 @@
         <li><a href="/">Início</a></li>
         <hr>
         <li><a href="/adicionarCliente">Adicionar cliente</a></li>
-        <li><a class="active" href="/listarClientes">Listar clientes</a></li>
+        <li><a href="/listarClientes">Listar clientes</a></li>
         <li><a href="/adicionarProduto">Adicionar Produto</a></li>
-        <li><a href="/listarProdutos">Listar Produtos</a></li>
+        <li><a class="active" href="/listarProdutos">Listar Produtos</a></li>
         <hr>
         <li><a href="/public/sobre.html">Sobre o site</a></li>
         <li><a href="/public/contato.html">Mande um e-Mail</a></li>
       </ul>
       <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        <h1>Listar clientes</h1>
+        <h1>Listar produtos</h1>
         <table style="width: 100%;">
         	<thead>
         	<tr>
-            	<th>Nome completo</th>
-            	<th>Data de Nascimento</th>
-            	<th>e-Mail</th>
-            	<th>Sexo</th>
+				<th>ID</th>
+            	<th>Nome do Produto</th>
+            	<th>Marca</th>
+            	<th>Altura</th>
+            	<th>Largura</th>
+				<th>Comprimento</th>
+				<th>Peso</th>
+				<th>Preço</th>
             	<th>Editar</th>
             	<th>Remover</th>
           	</tr>
         	</thead>
         	<tbody>
-        	    <tr th:each="cliente: ${clientes}">
-        	    	<td th:text=${cliente.id}></td>
-        	    	<td th:text=${cliente.nome}></td>
+        	    <tr th:each="produto: ${produtos}">
+        	    	<td th:text=${produto.id}></td>
+        	    	<td th:text=${produto.nome}></td>
+        	    	<td th:text="${produto.marca}"></td>
+					<td th:text="${produto.x}"></td>
+					<td th:text="${produto.y}"></td>
+					<td th:text="${produto.z}"></td>
+					<td th:text="${produto.peso}"></td>
+					<td th:text="${produto.preco}"></td>
         	    	<td>
-        	    		<a th:href="'mailto:' + ${cliente.email}" th:text=${cliente.email}></a>
+        	    		<a th:href="@{/editarProduto/{id}(id=${produto.id})}">Editar</a>
         	    	</td>
-        	    	<td th:text=${cliente.genero}></td>
         	    	<td>
-        	    		<a th:href="@{/editarCliente/{id}(id=${cliente.id})}">Editar</a>
-        	    	</td>
-        	    	<td>
-        	    		<a th:href="@{/removerCliente/{id}(id=${cliente.id})}">Remover</a>
+        	    		<a th:href="@{/removerProduto/{id}(id=${produto.id})}">Remover</a>
         	    	</td>
           		</tr>
         	</tbody>

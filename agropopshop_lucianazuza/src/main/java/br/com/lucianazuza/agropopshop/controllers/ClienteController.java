@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.lucianazuza.agropopshop.model.Cliente;
+import br.com.lucianazuza.agropopshop.model.Produto;
 import br.com.lucianazuza.agropopshop.repositories.ClienteRepository;
+import br.com.lucianazuza.agropopshop.repositories.ProdutoRepository;
 
 @Controller
 @RequestMapping("/")
@@ -20,6 +22,8 @@ public class ClienteController {
 	
 	@Autowired
 	ClienteRepository clienteRepo;
+	@Autowired
+	ProdutoRepository produtoRepo;
 	
 	@GetMapping("/")
 	public String index() {
@@ -69,6 +73,53 @@ public class ClienteController {
 				()-> new IllegalAddException("id não existe"));
 		clienteRepo.delete(a);
 		return new ModelAndView("redirect:/listarClientes");
+	}
+	
+	/*--------------------------------------------------------------------*/
+	
+	@GetMapping("/listarProdutos")
+	public ModelAndView listarProdutos()
+	{
+		List<Produto> lista = produtoRepo.findAll();
+		ModelAndView mod = new ModelAndView("listarProdutos");
+		mod.addObject("produtos", lista);
+		return mod;
+	}
+	
+	@GetMapping("/adicionarProduto")
+	public ModelAndView pageAdicionarProduto() {
+		ModelAndView mod = new ModelAndView("adicionarProduto");
+		mod.addObject(new Produto());
+		return mod;
+	}
+	
+	@PostMapping("/adicionarProduto")
+	public String adicionarProduto(Produto p) {
+		this.produtoRepo.save(p);
+		return "redirect:/listarProdutos";
+	}
+	
+	@GetMapping("/editarProduto/{id}")
+	public ModelAndView pageEditarProduto(@PathVariable("id") long id) {
+		Produto produto = produtoRepo.findById(id).orElseThrow(
+				()-> new IllegalAddException("id não existe"));
+		ModelAndView mod = new ModelAndView("editarProduto");
+		mod.addObject(produto);
+		return mod;
+	}
+	
+	@PostMapping("/editarProduto/{id}")
+	public ModelAndView editarProduto(@PathVariable("id") long id, Produto produto){
+		this.produtoRepo.save(produto);
+		return new ModelAndView("redirect:/listarProdutos");
+	}
+	
+	@GetMapping("/removerProduto/{id}")
+	public ModelAndView removerProduto(@PathVariable("id") long id) {
+		Produto a = produtoRepo.findById(id).orElseThrow(
+				()-> new IllegalAddException("id não existe"));
+		produtoRepo.delete(a);
+		return new ModelAndView("redirect:/listarProdutos");
 	}
 	
 }

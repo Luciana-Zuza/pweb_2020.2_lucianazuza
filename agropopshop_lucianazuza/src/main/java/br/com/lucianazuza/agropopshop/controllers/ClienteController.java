@@ -61,8 +61,8 @@ public class ClienteController {
 		return mod;
 	}
 	
-	@PostMapping("/editarCliente/")
-	public ModelAndView editarCliente(Cliente cliente){
+	@PostMapping("/editarCliente/{id}")
+	public ModelAndView editarCliente(@PathVariable("id") long id, Cliente cliente){
 		this.clienteRepo.save(cliente);
 		return new ModelAndView("redirect:/listarClientes");
 	}

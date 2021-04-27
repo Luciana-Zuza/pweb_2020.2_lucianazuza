@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name="pessoas")
+@Table(name="cliente")
 public class Cliente implements Serializable{
 	
 	@Id
@@ -30,6 +30,9 @@ public class Cliente implements Serializable{
 	private String nome;
 	private String email;
 	private String genero;
+	
+	private String endereco;
+	private String cep;
 	
 	@Column(nullable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -58,6 +61,18 @@ public class Cliente implements Serializable{
 	}
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+	public String getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	public LocalDate getDataNascimento() {
 		return dataNascimento;

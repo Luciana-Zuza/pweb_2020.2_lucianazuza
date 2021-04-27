@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="Codigo Secreto" content="1520694924">
+    <meta name="Codigo Secreto" content="2014989300">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" th:href=@{css/style.css}>
     <title>Projeto Web</title>
 </head>
 <body>
     <ul>
-        <li><a href="index.html">Início</a></li>
+        <li><a href="/">Início</a></li>
         <hr>
-        <li><a href="canaisNoticias.html">Canais de notícias</a></li>
+        <li><a href="/adicionarCliente">Adicionar cliente</a></li>
+        <li><a href="/listarClientes">Listar clientes</a></li>
         <hr>
-        <li><a href="adicionarcliente.html">Adicionar cliente</a></li>
-        <li><a href="listarclientes.html">Listar clientes</a></li>
-        <hr>
-        <li><a href="sobre.html">Sobre o site</a></li>
-        <li><a href="contato.html">Mande um e-Mail</a></li>
+        <li><a href="/public/sobre.html">Sobre o site</a></li>
+        <li><a href="/public/contato.html">Mande um e-Mail</a></li>
       </ul>
       <div style="margin-left:25%;padding:1px 16px;height:1000px;">
-        <h1>Editar cliente</h1>
-        <form action="sucesso.html">
+        <h1>Adicionar cliente</h1>
+        <form th:object="${cliente}" method="POST" th:action=@{/editarCliente/{id}(id=${cliente.id})}>
           <label for="Nome">Nome completo*: </label>
-          <input type="text" name="Nome" id="Nome"><br>
+          <input type="text" name="Nome" th:field="*{nome}" id="Nome"><br>
           <label for="Data">Data de nascimento*:</label>
-          <input type="date" name="Data" id="Data"><br>
+          <input type="date" name="Data" th:field="*{dataNascimento}" id="Data"><br>
           <label for="Email">e-Mail*:</label>
-          <input type="email" name="Email" id="Email"><br>
+          <input type="email" name="Email" th:field="*{email}" id="Email"><br>
+          <label for="endereço">Endereço*:</label>
+          <input type="text" name="endereço" th:field="*{endereco}" id="endereço"><br>
+          <label for="cep">CEP*:</label>
+          <input type="text" name="cep" th:field="*{cep}" id="cep"><br>
           <label for="Sexo">Sexo*:</label><br>
-          <input type="radio" name="Sexo" id="Masculino">
+          <input type="radio" name="Sexo" th:field="*{genero}" value="Masculino" id="Masculino">
           <label for="Sexo">Masculino</label><br>
-          <input type="radio" name="Sexo" id="Feminino">
+          <input type="radio" name="Sexo" th:field="*{genero}" value="Feminino" id="Feminino">
           <label for="Sexo">Feminino</label><br>
-          <input type="radio" name="Sexo" id="NaoInformar">
+          <input type="radio" name="Sexo" th:field="*{genero}" value="NaoInformar" id="NaoInformar">
           <label for="Sexo">Não informar</label><br>
           <input type="reset" value="Limpar" class="button">
           <input type="submit" value="Cadastrar" class="button">

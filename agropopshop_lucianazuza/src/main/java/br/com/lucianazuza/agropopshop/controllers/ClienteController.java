@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import br.com.lucianazuza.agropopshop.model.Cliente;
@@ -120,6 +121,22 @@ public class ClienteController {
 				()-> new IllegalAddException("id não existe"));
 		produtoRepo.delete(a);
 		return new ModelAndView("redirect:/listarProdutos");
+	}
+
+	@GetMapping("/procurarProduto")
+	public ModelAndView formProcurarProduto(){
+		ModelAndView model = new ModelAndView("procurarProduto");
+		String nomeProduto = "";
+		model.addObject("nomeProduto", nomeProduto);
+		return model;
+	}
+
+	@GetMapping("/procurarProduto/")
+	public ModelAndView procurarProduto(@RequestParam("nomeProduto") String nomeProduto){
+		ModelAndView model = new ModelAndView("listarProdutos");
+		List<Produto> produtos = produtoRepo.findByNome(nomeProduto);
+		model.addObject("produtos", produtos);
+		return model;
 	}
 	
 }

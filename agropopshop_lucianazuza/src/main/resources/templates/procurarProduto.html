@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="Codigo Secreto" content="2014989300">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href=@{/css/style.css}>
+    <title>Projeto Web</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="/">Início</a></li>
+        <hr>
+        <li><a href="/adicionarCliente">Adicionar cliente</a></li>
+        <li><a href="/listarClientes">Listar clientes</a></li>
+        <li><a href="/adicionarProduto">Adicionar Produto</a></li>
+        <li><a class="active" href="/listarProdutos">Listar Produtos</a></li>
+        <hr>
+        <li><a href="/public/sobre.html">Sobre o site</a></li>
+        <li><a href="/public/contato.html">Mande um e-Mail</a></li>
+    </ul>
+    <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        <h1>Procurar produtos</h1>
+        <form th:action="@{/procurarProduto/{nomeProduto} (nomeProduto=${nomeProduto})}" th:object="${nomeProduto}" method="GET">
+            <label for="barraPesquisa">Pesquise o nome do produto: </label>
+            <input type="text" th:value="${nomeProduto}" name="nomeProduto" id="nomeProduto">
+            <input type="submit" value="Procurar">
+        </form>
+    </div>
+</body>
+
+</html>

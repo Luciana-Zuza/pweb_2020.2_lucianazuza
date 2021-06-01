@@ -31,6 +31,7 @@
             	<th>Altura</th>
             	<th>Largura</th>
 				<th>Comprimento</th>
+				<th>Volume</th>
 				<th>Peso</th>
 				<th>Preço</th>
             	<th>Editar</th>
@@ -45,6 +46,7 @@
 					<td th:text="${produto.x}"></td>
 					<td th:text="${produto.y}"></td>
 					<td th:text="${produto.z}"></td>
+					<td th:text="${produto.x} * ${produto.y} * ${produto.z}"></td>
 					<td th:text="${produto.peso}"></td>
 					<td th:text="${produto.preco}"></td>
         	    	<td>
